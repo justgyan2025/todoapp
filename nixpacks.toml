@@ -1,8 +1,8 @@
 [phases.setup]
-packages = ["python39", "gcc", "postgresql"]
+packages = ["python39", "python39-pip", "gcc", "postgresql"]
 
 [phases.install]
-cmds = ["python -m pip install --upgrade pip", "pip install -r requirements.txt"]
+cmds = ["python3.9 -m pip install --upgrade pip", "python3.9 -m pip install -r requirements.txt"]
 
 [start]
 cmd = "gunicorn app:app"
