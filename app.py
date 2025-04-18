@@ -132,7 +132,8 @@ def delete_todo(id):
     return redirect(url_for('dashboard'))
 
 with app.app_context():
-    db.create_all()
+    if not db.engine.dialect.has_table(db.engine, 'user'):
+        db.create_all()
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
