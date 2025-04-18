@@ -16,4 +16,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Define the command to run the application
-CMD gunicorn --bind :\$PORT --workers 3 --threads 2 app:app
+CMD gunicorn --bind 0.0.0.0:$PORT --workers 3 --threads 2 app:app
