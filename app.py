@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+from sqlalchemy import inspect
 
 import os
 
@@ -132,7 +133,7 @@ def delete_todo(id):
     return redirect(url_for('dashboard'))
 
 with app.app_context():
-    if not db.engine.dialect.has_table(db.engine, 'user'):
+    if not inspect(db.engine).has_table('user'):
         db.create_all()
 
 if __name__ == '__main__':
